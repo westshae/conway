@@ -34,7 +34,7 @@ namespace conway{
         if(alive){
           return '#';
         }else{
-          return ' ';
+          return '+';
         }
       }
 
@@ -46,11 +46,18 @@ namespace conway{
   };
   class AbstractConway{
     public:
-      virtual bool generateBoard(int board_size);
-      virtual Cell getCell(int x, int y);
-      virtual void setCell(int x, int y, bool alive);
-      virtual int aliveNeighbours(int x, int y);
+      virtual void resetBoard(int board_size) = 0;
+      virtual void resetBoard(int x_size, int y_size) = 0;
+      virtual int boardHeight() = 0;
+      virtual int boardWidth() = 0;
+      virtual Cell* getCell(int x, int y) = 0;
+      virtual void setCell(int x, int y, bool alive) = 0;
+      virtual int aliveNeighbours(int x, int y) = 0;
+      virtual void printBoard() = 0;
+    private:
+      virtual bool validCell(int x, int y) = 0;
   };
+
 }
 
 #endif /* __ABSTRACT_DB_HPP__ */
