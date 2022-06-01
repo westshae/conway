@@ -1,0 +1,2 @@
+Compile
+g++ main.cpp
