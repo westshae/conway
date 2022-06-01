@@ -46,16 +46,11 @@ namespace conway{
   };
   class AbstractConway{
     public:
-      //TODO generateBoard()
       virtual bool generateBoard(int board_size);
-      //TODO getCell()
-      //TODO setCell()
-      //TODO nearbyNeighbour()
-    private:
+      virtual Cell getCell(int x, int y);
+      virtual void setCell(int x, int y, bool alive);
+      virtual int aliveNeighbours(int x, int y);
   };
-  
-
-  
 }
 
 #endif /* __ABSTRACT_DB_HPP__ */
