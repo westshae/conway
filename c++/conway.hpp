@@ -9,6 +9,7 @@ namespace conway{
         x = x_in;
         y = y_in;
         alive = alive_in;
+        change_alive = false;
       }
 
       //Returns coords as a pair.
@@ -22,8 +23,15 @@ namespace conway{
       }
 
       //setter for 'alive' bool
-      void set_alive(bool alive_in){
-        alive = alive_in;
+      void toggle_alive(){
+        change_alive = !alive;
+      }
+
+      //Updates alive after all cells have been changed.
+      void update_alive(){
+        if(change_alive){
+          alive = !alive;
+        }
       }
 
       //Returns # if cell alive, else ' '
@@ -36,10 +44,12 @@ namespace conway{
       }
 
 
+
     private:
       int x;
       int y;
       bool alive;
+      bool change_alive;
   };
   class AbstractConway{
     public:

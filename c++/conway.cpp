@@ -49,6 +49,10 @@ namespace conway{
         if(!valid_cell(x,y)) throw std::invalid_argument("getCell(x,y) is out of range");
         board.at(x).at(y) = new Cell(x,y,alive);
       }
+      void set_cell(int x, int y, Cell *cell){
+        if(!valid_cell(x,y)) throw std::invalid_argument("getCell(x,y) is out of range");
+        board.at(x).at(y) = cell;
+      }
 
       int alive_neighbours(int x_in, int y_in){
         int alive_neighbours = 0;
@@ -70,8 +74,10 @@ namespace conway{
             Cell cell = *board.at(x).at(y);
             cout << cell.to_char() << " ";
           }
-          cout << endl;
+                  cout << endl;
         }
+                          // cout << endl;
+
       }
 
     private:

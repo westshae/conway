@@ -1,11 +1,10 @@
-
-#include <iostream>
-#include <iostream>
-#include <sstream>
-#include <string>
-
 #include "conway.cpp"
+#include <chrono>
+#include <thread>
+
 using namespace std;
+using namespace std::this_thread;
+using namespace std::chrono;
 
 struct command
 {
@@ -13,7 +12,6 @@ struct command
   int param1;
   int param2;
 };
-
 
 int main()
 {
@@ -29,6 +27,41 @@ int main()
   conway->set_cell(2, 2, true);
   conway->set_cell(0, 1, true);
   conway->set_cell(2, 1, true);
-  
-  conway->print_board();
+
+  while (true)
+  {
+    sleep_for(seconds(1));
+    conway->print_board();
+
+    for (int x = 0; x < board_size - 1; x++)
+    {
+      for (int y = 0; y < board_size - 1; y++)
+      {
+        Cell *cell = conway->get_cell(x, y);
+        int neigh = conway->alive_neighbours(x, y);
+        
+        if(cell->is_alive()){
+          if(conway->alive_neighbours(x,y) < 2){
+            cell->toggle_alive();
+          }
+          else if(conway->alive_neighbours(x,y) > 3){
+            cell->toggle_alive();
+          }
+        }else{
+          if(conway->alive_neighbours(x,y) == 3){
+            cell->toggle_alive();
+          }
+        }
+        
+      }
+    }
+
+    for (int x = 0; x < board_size - 1; x++)
+    {
+      for (int y = 0; y < board_size - 1; y++)
+      {
+        conway->get_cell(x, y)->update_alive();
+      }
+    }
+  }
 }
