@@ -13,6 +13,7 @@ namespace conway{
         resetBoard(size);
       }
 
+
       void resetBoard(int size){
         resetBoard(size, size);
       }
@@ -51,8 +52,8 @@ namespace conway{
 
       int aliveNeighbours(int x_in, int y_in){
         int alive_neighbours = 0;
-        for(int x = -1; x < 1; x++){
-          for(int y = -1; y < 1; y++){
+        for(int x = -1; x <= 1; x++){
+          for(int y = -1; y <= 1; y++){
             if(x == 0 && y == 0) continue;
             if(!validCell(x_in + x, y_in + y)) continue;
             Cell cell = *board.at(x_in+x).at(y_in+y);

@@ -1,6 +1,3 @@
-#ifndef __ABSTRACT_DB_HPP__
-#define __ABSTRACT_DB_HPP__
-
 #include<tuple>
 
 using namespace std;
@@ -59,5 +56,3 @@ namespace conway{
   };
 
 }
-
-#endif /* __ABSTRACT_DB_HPP__ */
