@@ -1,31 +1,34 @@
 
-#include<iostream>
-#include"conway.cpp"
+#include <iostream>
+#include <iostream>
+#include <sstream>
+#include <string>
+
+#include "conway.cpp"
 using namespace std;
 
-int parse_input_to_int(string print_first);
+struct command
+{
+  string command;
+  int param1;
+  int param2;
+};
 
-int main(){
-  
-  int board_size = parse_input_to_int("What would you like the board size to be?: \n");
+
+int main()
+{
+  string input;
+  int board_size = 1;
+  cout << "Enter board size:: " << endl;
+  cin >> input;
+  board_size = stoi(input);
 
   Conway *conway = new Conway(board_size);
 
-  // while(true){
-  //   int result = parse_input_to_int("Input:: ");
-  // }
-  conway->set_cell(0,0,true);
-  conway->set_cell(2,2,true);
-  conway->set_cell(0,1, true);
-  conway->set_cell(2,1, true);
+  conway->set_cell(0, 0, true);
+  conway->set_cell(2, 2, true);
+  conway->set_cell(0, 1, true);
+  conway->set_cell(2, 1, true);
+  
   conway->print_board();
-}
-
-int parse_input_to_int(string print_first){
-  string input;
-  int value;
-  cout<< print_first;
-  cin >> input;
-  value = stoi(input);
-  return value;
 }
