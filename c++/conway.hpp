@@ -24,13 +24,14 @@ namespace conway{
 
       //setter for 'alive' bool
       void toggle_alive(){
-        change_alive = !alive;
+        change_alive = true;
       }
 
       //Updates alive after all cells have been changed.
       void update_alive(){
         if(change_alive){
           alive = !alive;
+          change_alive = false;
         }
       }
 

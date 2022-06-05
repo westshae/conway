@@ -23,10 +23,9 @@ int main()
 
   Conway *conway = new Conway(board_size);
 
-  conway->set_cell(0, 0, true);
-  conway->set_cell(2, 2, true);
-  conway->set_cell(0, 1, true);
-  conway->set_cell(2, 1, true);
+  conway->set_cell(5,5, true);
+    conway->set_cell(5,6,true);
+  conway->set_cell(5,7,true);
 
   while (true)
   {
@@ -39,7 +38,7 @@ int main()
       {
         Cell *cell = conway->get_cell(x, y);
         int neigh = conway->alive_neighbours(x, y);
-        
+
         if(cell->is_alive()){
           if(conway->alive_neighbours(x,y) < 2){
             cell->toggle_alive();
@@ -47,7 +46,8 @@ int main()
           else if(conway->alive_neighbours(x,y) > 3){
             cell->toggle_alive();
           }
-        }else{
+        }
+        else{
           if(conway->alive_neighbours(x,y) == 3){
             cell->toggle_alive();
           }
