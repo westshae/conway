@@ -13,14 +13,10 @@ namespace conway
   public:
     Conway(int size)
     {
-      reset_board(size);
-    }
-
-    void reset_board(int size)
-    {
       reset_board(size, size);
     }
 
+    //Create vectors of vectors of cells x*y size
     void reset_board(int x_size, int y_size)
     {
       vector<vector<Cell *>> x_vec;
@@ -37,11 +33,13 @@ namespace conway
       board = x_vec;
     }
 
+    //Returns width
     int board_width()
     {
       return board.size();
     }
 
+    //Returns height
     int board_height()
     {
       if (board.size() == 0)
@@ -49,6 +47,7 @@ namespace conway
       return board.at(0).size();
     }
 
+    //Returns pointer to cell
     Cell *get_cell(int x, int y)
     {
       if (!valid_cell(x, y))
@@ -56,6 +55,7 @@ namespace conway
       return board.at(x).at(y);
     }
 
+    //Updates cell
     void set_cell(int x, int y, bool alive)
     {
       if (!valid_cell(x, y))
@@ -63,6 +63,7 @@ namespace conway
       board.at(x).at(y) = new Cell(x, y, alive);
     }
 
+    //Checks all cells around current cell, if alive, count ++
     int alive_neighbours(int x_in, int y_in)
     {
       int alive_neighbours = 0;
@@ -83,6 +84,7 @@ namespace conway
       return alive_neighbours;
     }
 
+    //Iterate through board, print cells
     void print_board()
     {
       for (int y = 0; y < board_height(); y++)
@@ -94,7 +96,6 @@ namespace conway
         }
         cout << endl;
       }
-      // cout << endl;
     }
 
   private:

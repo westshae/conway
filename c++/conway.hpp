@@ -65,7 +65,6 @@ namespace conway
   class AbstractConway
   {
   public:
-    virtual void reset_board(int board_size) = 0;
     virtual void reset_board(int x_size, int y_size) = 0;
     virtual int board_height() = 0;
     virtual int board_width() = 0;

@@ -15,6 +15,7 @@ struct command
 
 int main()
 {
+  //Warning message, plus input for board_size.
   cout << "Please note, because conway doesn't have any border rules, this program does have errors along those borders due to infinity being impossible." << endl;
   string input;
   int board_size = 1;
@@ -24,6 +25,7 @@ int main()
 
   Conway *conway = new Conway(board_size);
 
+  //Creates beginner shapes, edit here to make new starting points.
   conway->set_cell(7, 5, true);
   conway->set_cell(7, 6, true);
   conway->set_cell(7, 7, true);
@@ -34,7 +36,7 @@ int main()
   conway->set_cell(3, 4, true);
   conway->set_cell(2, 3, true);
 
-
+  //Iterate through all cells, apply rules, update cells based on rules, wait for a second then print board
   while (true)
   {
     sleep_for(seconds(1));
