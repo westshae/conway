@@ -14,11 +14,11 @@ int main(){
   // while(true){
   //   int result = parse_input_to_int("Input:: ");
   // }
-  conway->setCell(0,0,true);
-  conway->setCell(2,2,true);
-  conway->setCell(0,1, true);
-  conway->setCell(2,1, true);
-  conway->printBoard();
+  conway->set_cell(0,0,true);
+  conway->set_cell(2,2,true);
+  conway->set_cell(0,1, true);
+  conway->set_cell(2,1, true);
+  conway->print_board();
 }
 
 int parse_input_to_int(string print_first){

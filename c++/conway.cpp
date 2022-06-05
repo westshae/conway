@@ -10,15 +10,15 @@ namespace conway{
   class Conway:public AbstractConway {
     public:
       Conway(int size){
-        resetBoard(size);
+        reset_board(size);
       }
 
 
-      void resetBoard(int size){
-        resetBoard(size, size);
+      void reset_board(int size){
+        reset_board(size, size);
       }
       
-      void resetBoard(int x_size, int y_size){
+      void reset_board(int x_size, int y_size){
         vector<vector<Cell*>> x_vec;
         for(int x = 0; x < x_size; x++){
           vector<Cell*> y_vec;
@@ -31,53 +31,53 @@ namespace conway{
         board = x_vec;
       }
 
-      int boardWidth(){
+      int board_width(){
         return board.size();
       }
 
-      int boardHeight(){
+      int board_height(){
         if(board.size() == 0) return 0;
         return board.at(0).size();
       }
 
-      Cell* getCell(int x, int y){
-        if(!validCell(x,y)) throw std::invalid_argument("getCell(x,y) is out of range");
+      Cell* get_cell(int x, int y){
+        if(!valid_cell(x,y)) throw std::invalid_argument("getCell(x,y) is out of range");
         return board.at(x).at(y);
       }
 
-      void setCell(int x, int y, bool alive){
-        if(!validCell(x,y)) throw std::invalid_argument("getCell(x,y) is out of range");
+      void set_cell(int x, int y, bool alive){
+        if(!valid_cell(x,y)) throw std::invalid_argument("getCell(x,y) is out of range");
         board.at(x).at(y) = new Cell(x,y,alive);
       }
 
-      int aliveNeighbours(int x_in, int y_in){
+      int alive_neighbours(int x_in, int y_in){
         int alive_neighbours = 0;
         for(int x = -1; x <= 1; x++){
           for(int y = -1; y <= 1; y++){
             if(x == 0 && y == 0) continue;
-            if(!validCell(x_in + x, y_in + y)) continue;
+            if(!valid_cell(x_in + x, y_in + y)) continue;
             Cell cell = *board.at(x_in+x).at(y_in+y);
-            if(!cell.isAlive()) continue;
+            if(!cell.is_alive()) continue;
             alive_neighbours++;
           }
         }
         return alive_neighbours;
       }
 
-      void printBoard(){
-        for(int y = 0; y < boardHeight(); y++){
-          for(int x = 0; x < boardWidth(); x++){
+      void print_board(){
+        for(int y = 0; y < board_height(); y++){
+          for(int x = 0; x < board_width(); x++){
             Cell cell = *board.at(x).at(y);
-            cout << cell.toChar() << " ";
+            cout << cell.to_char() << " ";
           }
           cout << endl;
         }
       }
 
     private:
-      bool validCell(int x, int y){
-        if(x < 0 || x > boardWidth()) return false;
-        if(y < 0 || y > boardHeight()) return false;
+      bool valid_cell(int x, int y){
+        if(x < 0 || x > board_width()) return false;
+        if(y < 0 || y > board_height()) return false;
         return true;
       }
       vector<vector<Cell*>> board;
